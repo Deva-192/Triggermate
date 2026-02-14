@@ -1,0 +1,9 @@
+
+{
+  "name": "Triggermate AI Agency",
+  "description": "A high-performance, dark-themed website for Triggermate, an AI automation agency specializing in Lead Gen, Voice AI, and HR automation systems.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

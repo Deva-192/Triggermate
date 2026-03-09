@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import LogoTicker from './components/LogoTicker';
 import { Stats } from './components/Stats';
 import { Services } from './components/Services';
+import { Trades } from './components/Trades';
 import { HowItWorks } from './components/HowItWorks';
 import { CaseStudies } from './components/CaseStudies';
 import { Testimonials } from './components/Testimonials';
@@ -26,8 +28,10 @@ const App: React.FC = () => {
       <Navbar scrolled={scrolled} />
       <main>
         <Hero />
+        <LogoTicker />
         <Stats />
         <Services />
+        <Trades />
         <HowItWorks />
         <CaseStudies />
         <Testimonials />

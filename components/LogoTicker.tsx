@@ -2,63 +2,47 @@
 import React from 'react';
 
 const LOGOS = [
-    { src: '/logos/logo1.png', alt: 'Partner 1' },
-    { src: '/logos/logo2.png', alt: 'Partner 2' },
-    { src: '/logos/logo3.png', alt: 'Partner 3' },
-
-    { src: '/logos/logo5.png', alt: 'Partner 5' },
-    { src: '/logos/logo6.png', alt: 'National Positions' },
+  { src: '/logos/logo1.png', alt: 'Partner 1' },
+  { src: '/logos/logo2.png', alt: 'Calibrate' },
+  { src: '/logos/logo3.png', alt: 'Progression' },
+  { src: '/logos/logo5.png', alt: 'Partner 5' },
+  { src: '/logos/logo6.png', alt: 'National Positions' },
 ];
 
+const DOUBLE = [...LOGOS, ...LOGOS, ...LOGOS];
+
 const LogoTicker: React.FC = () => {
-    return (
-        <section className="py-12 bg-slate-950 border-y border-white/5 overflow-hidden">
-            <div className="container mx-auto px-6 mb-8 text-center">
-                <p className="text-slate-500 text-sm font-semibold uppercase tracking-widest">Trusted by industry leaders</p>
+  return (
+    <section className="py-14 relative border-y border-white/5 overflow-hidden">
+      <div className="absolute inset-0 bg-white/[0.015]" />
+
+      <div className="container mx-auto px-6 mb-8 text-center relative z-10">
+        <p className="text-xs font-bold uppercase tracking-[0.25em] text-gray-600">
+          Trusted by industry leaders
+        </p>
+      </div>
+
+      {/* Fade masks */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 z-10"
+        style={{ background: 'linear-gradient(to right, #030303, transparent)' }} />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 z-10"
+        style={{ background: 'linear-gradient(to left, #030303, transparent)' }} />
+
+      <div className="relative overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-16 md:gap-24">
+          {DOUBLE.map((logo, idx) => (
+            <div key={idx} className="mx-4 flex-shrink-0 opacity-40 hover:opacity-70 transition-opacity duration-300">
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className="h-8 md:h-10 w-auto object-contain filter brightness-200"
+              />
             </div>
-
-            <div className="relative flex overflow-x-hidden">
-                <div className="animate-marquee whitespace-nowrap flex items-center gap-16 md:gap-24">
-                    {/* First set of logos */}
-                    {LOGOS.map((logo, idx) => (
-                        <div key={`logo-1-${idx}`} className="mx-4 flex-shrink-0">
-                            <img
-                                src={logo.src}
-                                alt={logo.alt}
-                                className="h-10 md:h-16 w-auto object-contain opacity-100"
-                            />
-                        </div>
-                    ))}
-
-                    {/* Duplicate set for seamless scrolling */}
-                    {LOGOS.map((logo, idx) => (
-                        <div key={`logo-2-${idx}`} className="mx-4 flex-shrink-0">
-                            <img
-                                src={logo.src}
-                                alt={logo.alt}
-                                className="h-10 md:h-16 w-auto object-contain opacity-100"
-                            />
-                        </div>
-                    ))}
-
-                    {/* Triplicate set for wide screens */}
-                    {LOGOS.map((logo, idx) => (
-                        <div key={`logo-3-${idx}`} className="mx-4 flex-shrink-0">
-                            <img
-                                src={logo.src}
-                                alt={logo.alt}
-                                className="h-10 md:h-16 w-auto object-contain opacity-100"
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center gap-16 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 hover:opacity-100 ml-full">
-                    {/* Duplicate structure if needed for CSS only marquee - but typically flex gap is enough with simple animation */}
-                </div>
-            </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default LogoTicker;
